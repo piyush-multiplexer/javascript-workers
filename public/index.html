@@ -56,6 +56,7 @@
 <body>
     <div id="wrap">
         <script type="text/javascript">
+            const endpoint = window.origin;
             if (typeof (Worker) === "undefined") {
                 alert("Oops, your browser doesn't support Web Worker!");
             }
@@ -64,7 +65,7 @@
                 cleanWindowAndStart();
                 let a = [];
                 async function getData() {
-                    return fetch('http://localhost:3000/getData')
+                    return fetch(`${endpoint}/getData`)
                         .then(res => res.json())
                         .then(data => {
                             a = data;
