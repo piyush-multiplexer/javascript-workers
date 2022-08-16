@@ -47,7 +47,7 @@ function withWebWorker() {
   worker.onmessage = function (e) {
     afterStop(e.data, true);
   };
-  worker.postMessage("start");
+  worker.postMessage(["start", endpoint]);
 }
 
 function cleanWindowAndStart() {

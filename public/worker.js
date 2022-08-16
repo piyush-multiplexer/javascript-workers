@@ -1,9 +1,9 @@
 onmessage = async function (e) {
-  if (e.data === "start") {
+  if (e.data[0] === "start") {
     let a = [];
 
     async function getData() {
-      return fetch("http://localhost:3000/getData")
+      return fetch(`${e.data[1]}/getData`)
         .then((res) => res.json())
         .then((data) => {
           a = data;
