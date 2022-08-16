@@ -20,18 +20,19 @@
             <div class="row pt-3">
                 <div class="col">
                     <h2>Dedicated Worker</h2>
-                    <div class="page-header">
-                        <h4>Sorting Array with Bubble Sort</h4>
+                    <div class="text-secondary h4">
+                        Sorting Array with Bubble Sort(50k)
                     </div>
-                    <p class="lead" style="text-align: center;">
-                        <button class="btn btn-large" onclick="nonWebWorker();">Without Web Worker</button>
-                        <button class="btn btn-success btn-large" onclick="withWebWorker();">With Web Worker</button>
-                    </p>
+                    <div>
+                        <button class="btn btn-large btn-primary" onclick="nonWebWorker();">Without Web Worker</button>
+                        <button class="btn btn-large btn-success" onclick="withWebWorker();">With Web Worker</button>
+                    </div>
 
-                    <div id="progressbar" class="progress progress-striped active hide">
-                        <div class="bar" style="width: 100%;"></div>
+                    <div id="progressbar" class="progress hide">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                     </div>
-                    <div id="resultBox" class="hide">
+                    <div id="resultBox" class="hide bg-info rounded px-2">
                         <p class="muted">
                             Array sorted in:
                         </p>
@@ -48,24 +49,31 @@
                         </p>
                     </div>
                 </div>
+                <div class="col-1">
+                    <div class="vr h-100">
+                    </div>
+                </div>
                 <div class="col">
                     <h2>Shared Worker</h2>
+                    <div class="text-secondary h4">
+                        Multiply/Square Numberes with Shared Resource
+                    </div>
                     <div>
                         <input type="text" id="number1" class="form-control" placeholder="Enter number 1" />
                         <input type="text" id="number2" class="form-control mt-1" placeholder="Enter number 2" />
-                        <input type="button" class="btn btn-primary mt-2" value="Calculate" onclick="multiply();" />
-                        <p class="result1"></p>
+                        <input type="button" class="btn btn-dark mt-2" value="Calculate" onclick="multiply();" />
+                        <p class="result1 text-success pt-2"></p>
                         <iframe id="iframe" src="shared.html"></iframe>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="push"></div>
-        <div id="footer">
-            <p class="muted credit pull-left">By <a href="http://piyushgoyani.thesourcepedia.org/"
-                    target="_blank">Piyush
+        <div id="footer" class="fixed-bottom pt-3 text-center bg-primary bg-gradient">
+            <p class="text-dark">By
+                <a class="text-white" href="http://piyushgoyani.thesourcepedia.org/" target="_blank">Piyush
                     Goyani</a> /
-                <a href="https://github.com/piyush-multiplexer/javascript-workers" target="_blank">Github</a>
+                <a class="text-white" href="https://github.com/piyush-multiplexer/javascript-workers"
+                    target="_blank">Github</a>
             </p>
         </div>
         <script src="./utils.js"></script>
