@@ -14,16 +14,14 @@
         }
 
         function getSquare() {
-            console.log("getSquare", !!window.SharedWorker);
             let third = document.querySelector("#number3");
             let squared = document.querySelector(".result2");
 
             if (!!window.SharedWorker) {
                 let myWorker = new SharedWorker("shared-worker.js");
-                myWorker.port.postMessage([third.value, third.value]);
+                myWorker.port.postMessage([third.value, third.value, window.origin]);
                 myWorker.port.onmessage = function (e) {
                     squared.textContent = e.data;
-                    console.log("Message received from worker");
                 };
             }
         }

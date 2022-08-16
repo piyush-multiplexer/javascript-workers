@@ -76,11 +76,10 @@ function multiply() {
   if (!!window.SharedWorker) {
     let myWorker = new SharedWorker("shared-worker.js");
 
-    myWorker.port.postMessage([first.value, second.value]);
+    myWorker.port.postMessage([first.value, second.value, endpoint]);
 
     myWorker.port.onmessage = function (e) {
       multiplied.textContent = e.data;
-      console.log("Message received from worker");
     };
   }
 }

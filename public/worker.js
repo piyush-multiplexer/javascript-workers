@@ -33,9 +33,6 @@ onmessage = async function (e) {
         let end = new Date().getTime();
         let time = end - start;
         postMessage(time);
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 };
