@@ -1,0 +1,28 @@
+{
+  "name": "javascript-workers",
+  "version": "1.0.0",
+  "description": "##### This repo in mainly used to test the [`javascript-workers`] including Web Workers. Others are - Service Workers,  - Shared Workers,  - Dedicated Workers.",
+  "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyush-multiplexer/javascript-workers.git"
+  },
+  "keywords": [],
+  "author": "Piyush Goyani <thesourcepedia@gmail.com> (https://piyushgoyani.thesourcepedia.org/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piyush-multiplexer/javascript-workers/issues"
+  },
+  "homepage": "https://github.com/piyush-multiplexer/javascript-workers#readme"
+}
