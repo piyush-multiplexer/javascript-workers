@@ -9,165 +9,66 @@
     <meta name="author" content="Piyush Goyani">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-        html,
-        body {
-            height: 100%;
-        }
-
-        #wrap {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin: 0 auto -60px;
-        }
-
-        #push,
-        #footer {
-            height: 60px;
-        }
-
-        #footer {
-            background-color: #f5f5f5;
-        }
-
-        @media (max-width: 767px) {
-            #footer {
-                margin-left: -20px;
-                margin-right: -20px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-        }
-
-        .container {
-            width: auto;
-            max-width: 680px;
-        }
-
-        .container .credit {
-            margin: 20px 0;
-        }
-    </style>
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
     <div id="wrap">
-        <script type="text/javascript">
-            const endpoint = window.origin;
-            if (typeof (Worker) === "undefined") {
-                alert("Oops, your browser doesn't support Web Worker!");
-            }
-
-            function nonWebWorker() {
-                cleanWindowAndStart();
-                let a = [];
-                async function getData() {
-                    return fetch(`${endpoint}/getData`)
-                        .then(res => res.json())
-                        .then(data => {
-                            a = data;
-                        })
-                };
-
-                function bubbleSort(a) {
-                    var swapped;
-                    do {
-                        swapped = false;
-                        for (var i = 0; i < a.length - 1; i++) {
-                            if (a[i] > a[i + 1]) {
-                                var temp = a[i];
-                                a[i] = a[i + 1];
-                                a[i + 1] = temp;
-                                swapped = true;
-                            }
-                        }
-                    } while (swapped);
-                }
-
-                var start = new Date().getTime();
-                getData().then(() => {
-                    bubbleSort(a);
-                }).then(() => {
-                    var end = new Date().getTime();
-                    var time = end - start;
-                    afterStop(time, false);
-                });
-            }
-
-            function withWebWorker() {
-                cleanWindowAndStart();
-                var worker = new Worker("worker.js");
-                worker.onmessage = function (e) {
-                    afterStop(e.data, true);
-                };
-                worker.postMessage("start");
-            }
-
-            function cleanWindowAndStart() {
-                $("#resultBox").hide(500);
-                $("#withWW").hide();
-                $("#withoutWW").hide()
-                $("#progressbar").show(500);
-            }
-
-            function afterStop(spentTime, mode) {
-                $("#timespent").html(spentTime + "ms");
-                $("#progressbar").hide(500, function () {
-                    mode ? $("#withWW").show() : $("#withoutWW").show();
-                    $("#resultBox").show(500);
-                });
-
-            }
-        </script>
-
-        <!-- Begin page content -->
+        <!-- Page Content -->
         <div class="container">
-            <div class="page-header">
-                <h3>Sorting 50K Array with Bubble Sort</h3>
-            </div>
-            <p class="lead" style="text-align: center;">
-                <button class="btn btn-large" onclick="nonWebWorker();">Without Web Worker</button>
-                <button class="btn btn-success btn-large" onclick="withWebWorker();">With Web Worker</button>
-            </p>
+            <div class="row pt-3">
+                <div class="col">
+                    <h2>Dedicated Worker</h2>
+                    <div class="page-header">
+                        <h4>Sorting Array with Bubble Sort</h4>
+                    </div>
+                    <p class="lead" style="text-align: center;">
+                        <button class="btn btn-large" onclick="nonWebWorker();">Without Web Worker</button>
+                        <button class="btn btn-success btn-large" onclick="withWebWorker();">With Web Worker</button>
+                    </p>
 
-            <div id="progressbar" class="progress progress-striped active hide">
-                <div class="bar" style="width: 100%;"></div>
-            </div>
-
-            <div id="resultBox" class="well well-large hide">
-                <p class="muted">
-                    50K Array sorted in:
-                </p>
-                <h1 id="timespent"></h1>
-                <p id="withoutWW"
-                    style="font-size: 18px;font-weight: 200;line-height: 24px;color: inherit;margin-top:20px"
-                    class="hide">
-                    As you can see, without Web Worker, your browser maybe able to sort the 50K Array but you can't work
-                    with your browser while sorting and also your browser won't render anything until sorting ends,
-                    that's why you can't see the animated progress bar in the page.
-                </p>
-                <p id="withWW" style="font-size: 18px;font-weight: 200;line-height: 24px;color: inherit;margin-top:20px"
-                    class="hide">
-                    Your browser sorted 50K Array without any crash or lagging, because your browser supports Web
-                    Worker. When you do a job with Web Worker, it's just like when you run a program in another thread.
-                    Also you can see the animated progress bar while sorting.
-                </p>
+                    <div id="progressbar" class="progress progress-striped active hide">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                    <div id="resultBox" class="hide">
+                        <p class="muted">
+                            Array sorted in:
+                        </p>
+                        <h1 id="timespent"></h1>
+                        <p id="withoutWW" class="output hide">
+                            As you can see, without Web Worker, your browser maybe able to sort the 50K Array but you
+                            can't work with your browser while sorting and also your browser won't render anything until
+                            sorting ends, that's why you can't see the animated progress bar in the page.
+                        </p>
+                        <p id="withWW" class="output hide">
+                            Your browser sorted 50K Array without any crash or lagging, because your browser supports
+                            Web Worker. When you do a job with Web Worker, it's just like when you run a program in
+                            another thread. Also you can see the animated progress bar while sorting.
+                        </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <h2>Shared Worker</h2>
+                    <div>
+                        <input type="text" id="number1" class="form-control" placeholder="Enter number 1" />
+                        <input type="text" id="number2" class="form-control mt-1" placeholder="Enter number 2" />
+                        <input type="button" class="btn btn-primary mt-2" value="Calculate" onclick="multiply();" />
+                        <p class="result1"></p>
+                        <iframe id="iframe" src="shared.html"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="push"></div>
-    </div>
-
-    <div id="footer">
-        <div class="container">
+        <div id="footer">
             <p class="muted credit pull-left">By <a href="http://piyushgoyani.thesourcepedia.org/"
-                    target="_blank">Piyush Goyani</a> /
+                    target="_blank">Piyush
+                    Goyani</a> /
                 <a href="https://github.com/piyush-multiplexer/javascript-workers" target="_blank">Github</a>
             </p>
         </div>
-    </div>
+        <script src="./utils.js"></script>
 </body>
 
 </html>
