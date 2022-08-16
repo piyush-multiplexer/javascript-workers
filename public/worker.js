@@ -11,12 +11,12 @@ onmessage = async function (e) {
     }
 
     function bubbleSort(a) {
-      var swapped;
+      let swapped;
       do {
         swapped = false;
-        for (var i = 0; i < a.length - 1; i++) {
+        for (let i = 0; i < a.length - 1; i++) {
           if (a[i] > a[i + 1]) {
-            var temp = a[i];
+            let temp = a[i];
             a[i] = a[i + 1];
             a[i + 1] = temp;
             swapped = true;
@@ -24,14 +24,14 @@ onmessage = async function (e) {
         }
       } while (swapped);
     }
-    var start = new Date().getTime();
+    let start = new Date().getTime();
     getData()
       .then(() => {
         bubbleSort(a);
       })
       .then(() => {
-        var end = new Date().getTime();
-        var time = end - start;
+        let end = new Date().getTime();
+        let time = end - start;
         postMessage(time);
       })
       .catch((err) => {
