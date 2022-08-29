@@ -8,3 +8,16 @@ Others are
 
 ##### Demo: 
 https://jsworkers.herokuapp.com/
+> Deployed on Heroku, may not work after Heroku's free plans are stopped.
+
+#### To Run on Local Machine:
+
+##### Install Dependencies
+```
+npm i
+```
+
+##### Starting server
+```
+node server.js
+```
