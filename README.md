@@ -7,8 +7,8 @@ Others are
 - Dedicated Workers.
 
 ##### Demo: 
-https://jsworkers.herokuapp.com/
-> Deployed on Heroku, may not work after Heroku's free plans are stopped.
+https://javascript-workers.onrender.com/
+> Deployed on Heroku, may not work after Heroku's free plans are stopped. https://jsworkers.herokuapp.com/
 
 #### To Run on Local Machine:
 
